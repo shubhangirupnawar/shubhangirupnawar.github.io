@@ -10,10 +10,10 @@ const getMailHref = () =>
 const NAV_LINKS = ["Home", "About", "Experience", "Projects", "AI & ML", "Skills", "Contact"];
 
 const THEMES = [
-  { name: "Emerald", color: "#7fffb4" },
-  { name: "Cyberpunk", color: "#c77dff" },
-  { name: "Ocean", color: "#4f8cff" },
-  { name: "Crimson", color: "#ff6b6b" }
+  { name: "Teal", color: "#06b6d4" },
+  { name: "Violet", color: "#8b5cf6" },
+  { name: "Blue", color: "#3b82f6" },
+  { name: "Amber", color: "#f59e0b" }
 ];
 
 const EXPERIENCE = [
@@ -339,7 +339,7 @@ export default function App() {
   const [toastMessage, setToastMessage] = useState("");
 
   const [activeTheme, setActiveTheme] = useState(() => {
-    return localStorage.getItem("portfolio-theme") || "#7fffb4";
+    return localStorage.getItem("portfolio-theme") || "#06b6d4";
   });
 
   useEffect(() => {
