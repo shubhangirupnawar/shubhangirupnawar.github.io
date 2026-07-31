@@ -7,7 +7,7 @@ const getMailHref = () =>
     ? "mailto:shubhangirupnawar5@gmail.com"
     : "https://mail.google.com/mail/?view=cm&to=shubhangirupnawar5@gmail.com";
 
-const NAV_LINKS = ["Home", "About", "Projects", "AI & ML", "Skills", "Contact"];
+const NAV_LINKS = ["Home", "About", "Experience", "Projects", "AI & ML", "Skills", "Contact"];
 
 const THEMES = [
   { name: "Emerald", color: "#7fffb4" },
@@ -16,12 +16,67 @@ const THEMES = [
   { name: "Crimson", color: "#ff6b6b" }
 ];
 
-
+const EXPERIENCE = [
+  {
+    id: 1,
+    role: "Data Automation & Software Development Intern",
+    company: "3C Customerization Technologies Pvt. Ltd.",
+    duration: "Apr 2026 – Jul 2026",
+    bullets: [
+      "Developed automated data extraction (web scraping) solutions to collect structured data from multiple websites, designing reusable scripts to handle varying site structures and formats.",
+      "Contributed to building a centralized data platform for storing, retrieving, and visualizing extracted data efficiently, supporting reliable downstream analysis and reporting.",
+      "Collaborated remotely with the mentor and team through regular progress catch-ups, following professional software delivery practices, version control workflows, and strict data-security and confidentiality guidelines.",
+      "Worked independently on end-to-end pipelines — from writing extraction logic to validating and structuring the collected data — while managing timelines under real production constraints."
+    ]
+  }
+];
 
 const PROJECTS = [
   {
     id: 1,
-    icon: "◈",
+    icon: "👁️",
+    title: "Vision AI Analyzer",
+    tag: "React · FastAPI · Google Gemini AI",
+    desc: "A full-stack web app powered by Google Gemini AI that analyzes uploaded images, extracts detailed content, and generates human-readable AI summaries.",
+    bullets: [
+      "Designed a FastAPI backend to handle image processing requests and integrate with the Gemini AI API for real-time inference.",
+      "Built a clean, responsive React interface for image upload, live analysis feedback, and summary display.",
+      "Implemented error handling and response formatting to ensure reliable output across varied image types."
+    ],
+    github: "https://github.com/shubhangirupnawar/vision-ai-analyzer",
+    demo: "https://github.com/shubhangirupnawar/vision-ai-analyzer"
+  },
+  {
+    id: 2,
+    icon: "📡",
+    title: "Eccho-Tracker",
+    tag: "FastAPI · React · Supabase",
+    desc: "A full-stack mention-tracking platform with a FastAPI backend, REST APIs, Supabase database, and a responsive React UI for real-time tracking and visualization.",
+    bullets: [
+      "Implemented database schemas and API endpoints in Supabase to store and query tracked mentions efficiently.",
+      "Built dashboard views to visualize tracked data trends for end users in real time.",
+      "Optimized API response times and structured data models for scalable read/write operations."
+    ],
+    github: "https://github.com/shubhangirupnawar/eccho-tracker",
+    demo: "https://github.com/shubhangirupnawar/eccho-tracker"
+  },
+  {
+    id: 3,
+    icon: "💊",
+    title: "AI-Based Medicine Recommendation System",
+    tag: "Python · Flask · Machine Learning",
+    desc: "A machine learning system that predicts likely diseases from user-input symptoms and recommends appropriate medicines.",
+    bullets: [
+      "Trained an ML model to predict likely diseases from user-input symptoms and recommend appropriate medicines.",
+      "Deployed the trained model through a Flask web application, enabling real-time predictions through a simple web interface.",
+      "Handled data preprocessing, feature engineering, and model evaluation to improve prediction accuracy."
+    ],
+    github: "https://github.com/shubhangirupnawar",
+    demo: "https://github.com/shubhangirupnawar"
+  },
+  {
+    id: 4,
+    icon: "⛏️",
     title: "Ecom Review Miner",
     tag: "Python · Selenium · NLP · Scraping",
     desc: "Automated mining and sentiment extraction system designed for e-commerce reviews.",
@@ -30,56 +85,17 @@ const PROJECTS = [
       "Performs NLP-based sentiment analysis and key phrase extraction",
       "Structures raw review data into databases (MongoDB/JSON)",
     ],
-    github: "https://github.com/shubhangirupnawar/bigbasket-review-scraper",
-    demo: "https://github.com/shubhangirupnawar/bigbasket-review-scraper"
-  },
-  {
-    id: 2,
-    icon: "◎",
-    title: "Reviews Analytics Dashboard",
-    tag: "React.js · Chart.js · CSS Grid · APIs",
-    desc: "Interactive data dashboard visualizing product sentiment trends and customer feedback insights.",
-    bullets: [
-      "Visualizes customer sentiment distributions, rating trends, and key complaints",
-      "Enables dynamic filtering by date, product category, and rating",
-      "Integrates with scraped review datasets for real-time visualization",
-    ],
-    github: "https://github.com/shubhangirupnawar",
-    demo: "https://github.com/shubhangirupnawar"
-  },
-  {
-    id: 3,
-    icon: "✦",
-    title: "Vision AI Analyzer",
-    tag: "OpenAI Vision · Python · Streamlit · OpenCV",
-    desc: "Computer vision tool that processes uploaded images to extract semantic metadata and labels.",
-    bullets: [
-      "Utilizes advanced Vision APIs and OpenCV for image analysis",
-      "Generates captions, detects objects, and performs OCR on uploaded images",
-      "Built a streamlined web UI for real-time interactive analysis",
-    ],
-    github: "https://github.com/shubhangirupnawar",
-    demo: "https://github.com/shubhangirupnawar"
-  },
-  {
-    id: 4,
-    icon: "▲",
-    title: "Video Transcript Summarizer",
-    tag: "Whisper API · Python · FastAPI · GPT-4",
-    desc: "High-accuracy transcribing tool that converts audio/video into summaries and action points.",
-    bullets: [
-      "Transcribes video and audio files with high temporal accuracy",
-      "Generates automated chapter markers, key takeaways, and action items",
-      "Exposes clean REST APIs built on top of FastAPI",
-    ],
-    github: "https://github.com/shubhangirupnawar",
-    demo: "https://github.com/shubhangirupnawar"
-  },
+    github: "https://github.com/shubhangirupnawar/bb-fk-scraper",
+    demo: "https://github.com/shubhangirupnawar/bb-fk-scraper"
+  }
 ];
 
 const SKILLS = [
-  "React.js", "JavaScript", "Python", "Web Scraping", "Selenium",
-  "FastAPI", "NLP", "Computer Vision", "MongoDB", "Data Pipelines",
+  "Java", "Python", "C (Basic)",
+  "HTML", "React.js", "Flask", "FastAPI",
+  "Web Scraping", "Selenium", "Data Pipelines", "Data Visualization", "Google Sheets API",
+  "Machine Learning Basics", "Google Gemini AI", "REST APIs", "OOP", "Data Structures",
+  "VS Code", "Google Antigravity", "PyCharm", "JDK", "Git/GitHub", "Supabase"
 ];
 
 const AI_ML = [
@@ -88,28 +104,28 @@ const AI_ML = [
     icon: "🤖",
     title: "Natural Language Processing",
     desc: "Building NLP pipelines for text classification, sentiment analysis, and key phrase extraction from real-world datasets.",
-    tools: ["NLTK", "spaCy", "HuggingFace", "TextBlob", "OpenAI API"]
+    tools: ["NLTK", "spaCy", "HuggingFace", "TextBlob", "REST APIs"]
   },
   {
     id: 2,
     icon: "👁️",
     title: "Computer Vision",
     desc: "Developing image analysis tools using deep learning models for object detection, OCR, and visual metadata extraction.",
-    tools: ["OpenCV", "OpenAI Vision", "Streamlit", "PIL", "TensorFlow"]
+    tools: ["OpenCV", "Google Gemini AI", "PIL", "TensorFlow"]
   },
   {
     id: 3,
     icon: "🧠",
-    title: "Large Language Models",
-    desc: "Integrating LLMs like GPT-4 and Whisper into production applications for summarization, transcription, and chat-based tools.",
-    tools: ["GPT-4", "Whisper API", "LangChain", "FastAPI", "Python"]
+    title: "Large Language Models & Gen AI",
+    desc: "Integrating LLMs like Google Gemini AI and Whisper API into production applications for summarization, transcription, and interactive tools.",
+    tools: ["Google Gemini AI", "Whisper API", "LangChain", "FastAPI", "Python"]
   },
   {
     id: 4,
     icon: "📊",
-    title: "Data Intelligence & Pipelines",
+    title: "Data Automation & Scraping",
     desc: "Designing end-to-end data pipelines that scrape, clean, analyze, and visualize structured and unstructured datasets.",
-    tools: ["Pandas", "NumPy", "MongoDB", "Selenium", "Chart.js"]
+    tools: ["Pandas", "NumPy", "MongoDB", "Selenium", "Google Sheets API"]
   },
 ];
 
@@ -352,6 +368,7 @@ export default function App() {
   const sectionsRef = useRef({});
   const [heroRef, heroVis] = useReveal();
   const [aboutRef, aboutVis] = useReveal();
+  const [experienceRef, experienceVis] = useReveal();
   const [contactRef, contactVis] = useReveal();
 
   useEffect(() => {
@@ -412,12 +429,12 @@ export default function App() {
       <section className="section hero" data-section="Home"
         ref={el => { sectionsRef.current["Home"] = el; heroRef.current = el; }}>
         <div className={`hero-meta${heroVis ? " reveal-up" : " pre-reveal"}`} style={{ animationDelay: "0ms" }}>
-          <div className="hero-badge"><span className="badge-pulse" />Software Engineer • Passout 2026</div>
+          <div className="hero-badge"><span className="badge-pulse" />Software Developer | AI & Automation • Passout 2026</div>
         </div>
         <div className={`hero-content${heroVis ? " reveal-up" : " pre-reveal"}`} style={{ animationDelay: "120ms" }}>
           <h1 className="hero-title">Hi, I'm<br /><span className="name-gradient">Shubhangi</span></h1>
           <p className="hero-sub">
-            I build <TypedText words={["full stack web apps.", "web scraping tools.", "AI integration pipelines.", "interactive dashboards."]} /><br />
+            I build <TypedText words={["full stack web apps.", "data automation tools.", "AI integration pipelines.", "web scraping solutions."]} /><br />
             Solving real-world data and business problems.
           </p>
           <div className="hero-cta">
@@ -445,9 +462,9 @@ export default function App() {
         <div className="about-grid">
           <div className={`about-left${aboutVis ? " reveal-up" : " pre-reveal"}`} style={{ animationDelay: "80ms" }}>
             <h2 className="section-title">About Me</h2>
-            <p className="about-text">I'm a Software Engineer based in India, passed out in 2026, specializing in web scraping, data extraction, and software development.</p>
-            <p className="about-text">I build robust applications that automate data collection pipelines, analyze customer sentiment, and visualize complex datasets in interactive dashboards.</p>
-            <p className="about-text">My expertise spans React.js for modern web interfaces, Python for backend development and automation, and integration of smart AI APIs.</p>
+            <p className="about-text">I'm a Software Developer specializing in AI & Automation based in India, graduating in 2026. I focus on automated data extraction, web scraping, and AI-integrated applications.</p>
+            <p className="about-text">I build robust applications that automate data extraction pipelines, design FastAPI/Flask backends, and integrate generative AI APIs (Google Gemini AI) to solve real business needs.</p>
+            <p className="about-text">My expertise spans React.js for modern web interfaces, Python for backend development, database integration (Supabase, MongoDB), and custom automated scraping scripts.</p>
             <div style={{ marginTop: "1.5rem" }}>
               <Mag className="btn-primary" onClick={() => setResumeOpen(true)}>View Resume</Mag>
             </div>
@@ -458,38 +475,65 @@ export default function App() {
               <ul className="spec-list">
                 <li>Automating web data extraction and web scraping</li>
                 <li>Developing responsive and interactive user interfaces</li>
-                <li>Building efficient REST APIs with Python/FastAPI</li>
-                <li>Integrating AI/ML features into web applications</li>
+                <li>Building efficient REST APIs with Python/FastAPI/Flask</li>
+                <li>Integrating AI features (Gemini, Whisper) into web apps</li>
               </ul>
             </div>
             <div className="enjoy-card glass-card">
               <div className="enjoy-title">💡 What I Enjoy</div>
-              <p>Building custom web scrapers, data processing pipelines, and exploring how AI tools like Whisper and OpenAI can enrich regular web applications. I love solving scaling challenges in data scraping and building sleek UIs.</p>
+              <p>Building custom web scrapers, data pipelines, and exploring how AI tools like Google Gemini and Whisper can enrich applications. I love solving scaling challenges in data scraping and building sleek user experiences.</p>
               <p style={{ marginTop: "0.75rem" }}>Focused on engineering clean, scalable, and responsive code from backend to frontend.</p>
             </div>
           </div>
         </div>
       </section>
 
-
+      {/* Experience */}
+      <section className="section experience" data-section="Experience"
+        ref={el => { sectionsRef.current["Experience"] = el; experienceRef.current = el; }}>
+        <div className={`section-label${experienceVis ? " reveal-left" : " pre-reveal"}`}>02 — Experience</div>
+        <h2 className="section-title">Work Experience</h2>
+        <div className="experience-timeline">
+          {EXPERIENCE.map((exp, idx) => (
+            <div
+              key={exp.id}
+              className={`experience-item glass-card${experienceVis ? " reveal-up" : " pre-reveal"}`}
+              style={{ animationDelay: `${idx * 100}ms` }}
+            >
+              <div className="experience-header">
+                <div>
+                  <h3 className="experience-role">{exp.role}</h3>
+                  <span className="experience-company">{exp.company}</span>
+                </div>
+                <span className="experience-duration">{exp.duration}</span>
+              </div>
+              <ul className="experience-bullets">
+                {exp.bullets.map((bullet, i) => (
+                  <li key={i}>{bullet}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </section>
 
       {/* Projects */}
       <section className="section projects" data-section="Projects" ref={el => sectionsRef.current["Projects"] = el}>
-        <div className="section-label">02 — Projects</div>
+        <div className="section-label">03 — Projects</div>
         <h2 className="section-title">Selected Work</h2>
         <div className="projects-grid">{PROJECTS.map(p => <ProjectCard key={p.id} p={p} />)}</div>
       </section>
 
       {/* AI & ML */}
       <section className="section projects" data-section="AI & ML" ref={el => sectionsRef.current["AI & ML"] = el}>
-        <div className="section-label">03 — AI &amp; Machine Learning</div>
+        <div className="section-label">04 — AI &amp; Machine Learning</div>
         <h2 className="section-title">AI &amp; ML Expertise</h2>
         <div className="projects-grid">{AI_ML.map((item, i) => <AiMlCard key={item.id} item={item} index={i} />)}</div>
       </section>
 
       {/* Skills */}
       <section className="section skills" data-section="Skills" ref={el => sectionsRef.current["Skills"] = el}>
-        <div className="section-label">04 — Skills</div>
+        <div className="section-label">05 — Skills</div>
         <h2 className="section-title">Tech Stack</h2>
         <div className="skills-wrap">{SKILLS.map((s, i) => <SkillPill key={i} skill={s} index={i} />)}</div>
       </section>
@@ -497,7 +541,7 @@ export default function App() {
       {/* Contact */}
       <section className="section contact" data-section="Contact"
         ref={el => { sectionsRef.current["Contact"] = el; contactRef.current = el; }}>
-        <div className="section-label">05 — Contact</div>
+        <div className="section-label">06 — Contact</div>
         <div className={`contact-inner${contactVis ? " reveal-up" : " pre-reveal"}`}>
           <h2 className="section-title contact-title">Let's Connect</h2>
           <p className="contact-sub">Feel free to connect with me for opportunities, collaborations, or just to discuss AI and tech!</p>
@@ -513,7 +557,7 @@ export default function App() {
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z" /></svg>
               GitHub
             </Mag>
-            <Mag tag="a" className="connect-social-btn" href="https://www.linkedin.com/in/shubhangirupnawar" target="_blank" rel="noreferrer">
+            <Mag tag="a" className="connect-social-btn" href="https://www.linkedin.com/in/shubhangi-rupnawar" target="_blank" rel="noreferrer">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" /></svg>
               LinkedIn
             </Mag>
@@ -525,7 +569,7 @@ export default function App() {
         </div>
       </section>
 
-      <footer className="footer"><span>© 2026 Shubhangi Rupnawar • Software Engineer • Passout 2026</span></footer>
+      <footer className="footer"><span>© 2026 Shubhangi Rupnawar • Software Developer | AI & Automation • Passout 2026</span></footer>
 
       {/* Copy notification toast */}
       {toastMessage && (
