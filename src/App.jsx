@@ -429,7 +429,7 @@ export default function App() {
       <section className="section hero" data-section="Home"
         ref={el => { sectionsRef.current["Home"] = el; heroRef.current = el; }}>
         <div className={`hero-meta${heroVis ? " reveal-up" : " pre-reveal"}`} style={{ animationDelay: "0ms" }}>
-          <div className="hero-badge"><span className="badge-pulse" />Software Developer | AI & Automation • Passout 2026</div>
+          <div className="hero-badge"><span className="badge-pulse" />SOFTWARE DEVELOPER | AI & AUTOMATION</div>
         </div>
         <div className={`hero-content${heroVis ? " reveal-up" : " pre-reveal"}`} style={{ animationDelay: "120ms" }}>
           <h1 className="hero-title">Hi, I'm<br /><span className="name-gradient">Shubhangi</span></h1>
@@ -462,7 +462,7 @@ export default function App() {
         <div className="about-grid">
           <div className={`about-left${aboutVis ? " reveal-up" : " pre-reveal"}`} style={{ animationDelay: "80ms" }}>
             <h2 className="section-title">About Me</h2>
-            <p className="about-text">I'm a Software Developer specializing in AI & Automation based in India, graduating in 2026. I focus on automated data extraction, web scraping, and AI-integrated applications.</p>
+            <p className="about-text">I'm a Software Developer specializing in AI & Automation based in India. I focus on automated data extraction, web scraping, and AI-integrated applications.</p>
             <p className="about-text">I build robust applications that automate data extraction pipelines, design FastAPI/Flask backends, and integrate generative AI APIs (Google Gemini AI) to solve real business needs.</p>
             <p className="about-text">My expertise spans React.js for modern web interfaces, Python for backend development, database integration (Supabase, MongoDB), and custom automated scraping scripts.</p>
             <div style={{ marginTop: "1.5rem" }}>
@@ -569,7 +569,7 @@ export default function App() {
         </div>
       </section>
 
-      <footer className="footer"><span>© 2026 Shubhangi Rupnawar • Software Developer | AI & Automation • Passout 2026</span></footer>
+      <footer className="footer"><span>© Shubhangi Rupnawar • SOFTWARE DEVELOPER | AI & AUTOMATION</span></footer>
 
       {/* Copy notification toast */}
       {toastMessage && (
