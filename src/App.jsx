@@ -6,43 +6,27 @@ const getMailHref = () =>
     ? "mailto:shubhangirupnawar5@gmail.com"
     : "https://mail.google.com/mail/?view=cm&to=shubhangirupnawar5@gmail.com";
 
-/* Reference site nav: About | Skills | Certifications | Experience | Contact
-   Shubhangi nav:      About | Projects | Skills | Experience | Contact        */
-const NAV_LINKS = ["About", "Projects", "Skills", "Experience", "Contact"];
+/* Section order: About | Experience | Projects | Skills | Contact */
+const NAV_LINKS = ["About", "Experience", "Projects", "Skills", "Contact"];
 
 const PROJECTS = [
   {
     id: 1,
-    icon: "👁️",
-    title: "Vision AI Analyzer",
-    tag: ["React", "FastAPI", "Google Gemini AI"],
-    desc: "A full-stack web app powered by Google Gemini AI that analyzes uploaded images and generates human-readable AI summaries.",
-    bullets: [
-      "Designed a FastAPI backend to integrate with Gemini AI API for real-time image inference.",
-      "Built a clean, responsive React interface for image upload, live analysis feedback, and summary display.",
-      "Implemented error handling and response formatting across varied image types.",
-    ],
-    github: "https://github.com/shubhangirupnawar/vision-ai-analyzer",
-    demo: "https://github.com/shubhangirupnawar/vision-ai-analyzer",
-    accent: "#06b6d4",
-  },
-  {
-    id: 2,
     icon: "📡",
-    title: "Eccho-Tracker",
-    tag: ["FastAPI", "React", "Supabase"],
-    desc: "A full-stack mention-tracking platform with a FastAPI backend, REST APIs, Supabase database, and a responsive React UI for real-time tracking.",
+    title: "ECCHO Social Follower Tracker",
+    tag: ["FastAPI", "React", "Supabase", "Gemini AI"],
+    desc: "Automated social media follower tracking platform with AI-powered extraction, brand URL validation, and interactive analytics reporting.",
     bullets: [
-      "Implemented database schemas and API endpoints in Supabase to store and query tracked mentions.",
-      "Built dashboard views to visualize tracked data trends for end users in real time.",
-      "Optimized API response times and structured data models for scalable operations.",
+      "AI-Powered Scraping: Uses Google Gemini AI for high-accuracy numeric follower extraction from dynamic social media pages.",
+      "Brand URL Validation: AI verifies whether social URLs belong to the target brand prior to scraping to ensure data accuracy.",
+      "Reporting & Analytics: Generates monthly aggregate snapshots, 15th & End-of-month snapshots, comparison dashboards, and Excel exports.",
     ],
     github: "https://github.com/shubhangirupnawar/eccho-tracker",
     demo: "https://github.com/shubhangirupnawar/eccho-tracker",
     accent: "#8b5cf6",
   },
   {
-    id: 3,
+    id: 2,
     icon: "💊",
     title: "AI-Based Medicine Recommendation",
     tag: ["Python", "Flask", "Machine Learning"],
@@ -57,7 +41,7 @@ const PROJECTS = [
     accent: "#10b981",
   },
   {
-    id: 4,
+    id: 3,
     icon: "⛏️",
     title: "Ecom Review Miner",
     tag: ["Python", "Selenium", "NLP"],
@@ -77,22 +61,22 @@ const SKILLS_GROUPS = [
   {
     title: "Languages",
     icon: "💻",
-    items: ["Python", "Java", "C (Basic)", "HTML", "JavaScript"],
+    items: ["Python"],
   },
   {
-    title: "Frameworks & Tools",
+    title: "Frameworks & Web",
     icon: "⚙️",
-    items: ["React.js", "FastAPI", "Flask", "Selenium", "Supabase"],
+    items: ["React.js", "FastAPI", "Flask", "Selenium", "REST APIs"],
   },
   {
-    title: "AI & Data",
+    title: "AI & Data Pipelines",
     icon: "🤖",
-    items: ["Google Gemini AI", "Machine Learning", "NLP", "Data Pipelines", "Pandas / NumPy"],
+    items: ["Google Gemini AI", "Machine Learning", "NLP", "Supabase", "MongoDB"],
   },
   {
     title: "Developer Tools",
     icon: "🛠️",
-    items: ["Git / GitHub", "VS Code", "PyCharm", "Google Sheets API", "REST APIs"],
+    items: ["Git / GitHub", "VS Code", "PyCharm", "Google Sheets API", "OOP"],
   },
 ];
 
@@ -219,7 +203,7 @@ export default function App() {
               <span className="gradient-text">Shubhangi Rupnawar</span>
             </h1>
             <p className="hero-role">
-              <TypedText words={["Software Developer", "AI & Automation Engineer", "Full Stack Developer", "Data Automation Specialist"]} />
+              <TypedText words={["Software Developer", "AI & Automation Engineer", "Data Automation Specialist", "Python Developer"]} />
               {" "}— building tools that automate, analyze, and solve real-world problems.
             </p>
             {/* CTA buttons — matching reference layout */}
@@ -251,8 +235,8 @@ export default function App() {
                 <div className="stat-label">Industry Internship</div>
               </div>
               <div className="stat-card">
-                <div className="stat-number gradient-text">4+</div>
-                <div className="stat-label">Selected Projects</div>
+                <div className="stat-number gradient-text">3+</div>
+                <div className="stat-label">Featured Projects</div>
               </div>
               <div className="stat-card">
                 <div className="stat-number gradient-text">10+</div>
@@ -270,14 +254,14 @@ export default function App() {
       {/* ── ABOUT ── */}
       <AboutSection sectionsRef={sectionsRef} />
 
+      {/* ── EXPERIENCE (Moved to top right after About!) ── */}
+      <ExperienceSection sectionsRef={sectionsRef} />
+
       {/* ── PROJECTS ── */}
       <ProjectsSection sectionsRef={sectionsRef} />
 
       {/* ── SKILLS ── */}
       <SkillsSection sectionsRef={sectionsRef} />
-
-      {/* ── EXPERIENCE ── */}
-      <ExperienceSection sectionsRef={sectionsRef} />
 
       {/* ── CONTACT ── */}
       <ContactSection sectionsRef={sectionsRef} getMailHref={getMailHref} copyEmail={copyEmail} setResumeOpen={setResumeOpen} />
@@ -337,9 +321,38 @@ function AboutSection({ sectionsRef }) {
           <p>I build robust applications that automate data extraction pipelines, design FastAPI/Flask backends, and integrate generative AI APIs like <strong>Google Gemini AI</strong> to solve real business needs.</p>
           <p>My expertise spans React.js for modern web interfaces, Python for backend development and automation, database integration with Supabase and MongoDB, and custom web scraping pipelines.</p>
           <div className="about-tags">
-            {["Full-Stack Development", "AI & Automation", "Web Scraping", "Data Pipelines", "REST APIs", "Machine Learning"].map(t => (
+            {["AI & Automation", "Python Development", "Web Scraping", "Data Pipelines", "REST APIs", "Machine Learning"].map(t => (
               <span key={t} className="about-tag">{t}</span>
             ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ── Experience ── */
+function ExperienceSection({ sectionsRef }) {
+  const [ref, vis] = useReveal();
+  return (
+    <section className="section section-alt" data-section="Experience" ref={el => { sectionsRef.current["Experience"] = el; }}>
+      <div className="section-inner">
+        <SectionHeader label="WHERE I'VE WORKED" title="Work Experience" />
+        <div ref={ref} className={`exp-wrap${vis ? " visible" : ""}`}>
+          <div className="card exp-card">
+            <div className="exp-head">
+              <div>
+                <h3 className="exp-role">Data Automation & Software Development Intern</h3>
+                <div className="exp-company">3C Customerization Technologies Pvt. Ltd.</div>
+              </div>
+              <span className="exp-badge">Apr 2026 – Jul 2026</span>
+            </div>
+            <ul className="exp-bullets">
+              <li>Developed automated data extraction (web scraping) solutions to collect structured data from multiple websites, designing reusable scripts to handle varying site structures.</li>
+              <li>Contributed to building a centralized data platform for storing, retrieving, and visualizing extracted data efficiently, supporting reliable downstream analysis and reporting.</li>
+              <li>Collaborated remotely with the mentor and team through regular progress catch-ups, following professional software delivery practices, version control workflows, and strict data-security guidelines.</li>
+              <li>Worked independently on end-to-end pipelines — from writing extraction logic to validating and structuring data — while managing timelines under real production constraints.</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -350,7 +363,7 @@ function AboutSection({ sectionsRef }) {
 /* ── Projects ── */
 function ProjectsSection({ sectionsRef }) {
   return (
-    <section className="section section-alt" data-section="Projects" ref={el => { sectionsRef.current["Projects"] = el; }}>
+    <section className="section" data-section="Projects" ref={el => { sectionsRef.current["Projects"] = el; }}>
       <div className="section-inner">
         <SectionHeader label="WHAT I'VE BUILT" title="Projects" desc="Real-world applications built with modern technologies and AI integrations." />
         <div className="projects-grid">
@@ -393,7 +406,7 @@ function ProjectCard({ p }) {
 /* ── Skills ── */
 function SkillsSection({ sectionsRef }) {
   return (
-    <section className="section" data-section="Skills" ref={el => { sectionsRef.current["Skills"] = el; }}>
+    <section className="section section-alt" data-section="Skills" ref={el => { sectionsRef.current["Skills"] = el; }}>
       <div className="section-inner">
         <SectionHeader label="TECH STACK" title="Skills & Technologies" desc="Technologies and tools I use to build and ship products." />
         <div className="skills-grid">
@@ -421,35 +434,6 @@ function SkillGroup({ group, idx }) {
         ))}
       </ul>
     </div>
-  );
-}
-
-/* ── Experience ── */
-function ExperienceSection({ sectionsRef }) {
-  const [ref, vis] = useReveal();
-  return (
-    <section className="section section-alt" data-section="Experience" ref={el => { sectionsRef.current["Experience"] = el; }}>
-      <div className="section-inner">
-        <SectionHeader label="WHERE I'VE WORKED" title="Work Experience" />
-        <div ref={ref} className={`exp-wrap${vis ? " visible" : ""}`}>
-          <div className="card exp-card">
-            <div className="exp-head">
-              <div>
-                <h3 className="exp-role">Data Automation & Software Development Intern</h3>
-                <div className="exp-company">3C Customerization Technologies Pvt. Ltd.</div>
-              </div>
-              <span className="exp-badge">Apr 2026 – Jul 2026</span>
-            </div>
-            <ul className="exp-bullets">
-              <li>Developed automated data extraction (web scraping) solutions to collect structured data from multiple websites, designing reusable scripts to handle varying site structures.</li>
-              <li>Contributed to building a centralized data platform for storing, retrieving, and visualizing extracted data efficiently, supporting reliable downstream analysis and reporting.</li>
-              <li>Collaborated remotely with the mentor and team through regular progress catch-ups, following professional software delivery practices, version control workflows, and strict data-security guidelines.</li>
-              <li>Worked independently on end-to-end pipelines — from writing extraction logic to validating and structuring data — while managing timelines under real production constraints.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
   );
 }
 
