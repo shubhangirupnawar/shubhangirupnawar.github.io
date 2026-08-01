@@ -332,30 +332,14 @@ function AboutSection({ sectionsRef }) {
     <section className="section" data-section="About" ref={el => { sectionsRef.current["About"] = el; }}>
       <div className="section-inner">
         <SectionHeader label="WHO I AM" title="About Me" />
-        <div ref={ref} className={`about-grid${vis ? " visible" : ""}`}>
-          <div className="about-text">
-            <p>I'm a <strong>Software Developer specializing in AI & Automation</strong> based in Maharashtra, India. Final-year B.Tech CSE student with hands-on internship experience in automated data extraction, web scraping, and AI-integrated applications.</p>
-            <p>I build robust applications that automate data extraction pipelines, design FastAPI/Flask backends, and integrate generative AI APIs like <strong>Google Gemini AI</strong> to solve real business needs.</p>
-            <p>My expertise spans React.js for modern web interfaces, Python for backend development and automation, database integration with Supabase and MongoDB, and custom web scraping pipelines.</p>
-            <div className="about-tags">
-              {["Full-Stack Development", "AI & Automation", "Web Scraping", "Data Pipelines", "REST APIs", "Machine Learning"].map(t => (
-                <span key={t} className="about-tag">{t}</span>
-              ))}
-            </div>
-          </div>
-          <div className="about-info card">
-            <div className="info-row"><span className="info-key">📧 Email</span><span className="info-val">shubhangirupnawar5@gmail.com</span></div>
-            <div className="info-row"><span className="info-key">📍 Location</span><span className="info-val">Maharashtra, India</span></div>
-            <div className="info-row"><span className="info-key">🎓 Education</span><span className="info-val">B.Tech CSE (2026)</span></div>
-            <div className="info-row"><span className="info-key">💼 Status</span><span className="status-chip">Available for Opportunities</span></div>
-            <div className="info-row">
-              <span className="info-key">🔗 LinkedIn</span>
-              <a href="https://www.linkedin.com/in/shubhangi-rupnawar-17a5443a3" target="_blank" rel="noreferrer" className="info-link">shubhangi-rupnawar</a>
-            </div>
-            <div className="info-row">
-              <span className="info-key">💻 GitHub</span>
-              <a href="https://github.com/shubhangirupnawar" target="_blank" rel="noreferrer" className="info-link">shubhangirupnawar</a>
-            </div>
+        <div ref={ref} className={`about-content${vis ? " visible" : ""}`}>
+          <p>I'm a <strong>Software Developer specializing in AI & Automation</strong> based in Maharashtra, India. Final-year B.Tech CSE student with hands-on internship experience in automated data extraction, web scraping, and AI-integrated applications.</p>
+          <p>I build robust applications that automate data extraction pipelines, design FastAPI/Flask backends, and integrate generative AI APIs like <strong>Google Gemini AI</strong> to solve real business needs.</p>
+          <p>My expertise spans React.js for modern web interfaces, Python for backend development and automation, database integration with Supabase and MongoDB, and custom web scraping pipelines.</p>
+          <div className="about-tags">
+            {["Full-Stack Development", "AI & Automation", "Web Scraping", "Data Pipelines", "REST APIs", "Machine Learning"].map(t => (
+              <span key={t} className="about-tag">{t}</span>
+            ))}
           </div>
         </div>
       </div>
