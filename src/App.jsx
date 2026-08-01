@@ -186,7 +186,7 @@ export default function App() {
       <nav className={`nav${scrolled ? " nav-scrolled" : ""}`}>
         <div className="nav-inner">
           <div className="nav-logo" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-            shubhangi<span className="logo-dot">.</span>
+            <span className="gradient-text">SR</span>
           </div>
           <ul className={`nav-links${menuOpen ? " open" : ""}`}>
             {NAV_LINKS.map(l => (
