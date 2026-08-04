@@ -6,7 +6,6 @@ const getMailHref = () =>
     ? "mailto:shubhangirupnawar5@gmail.com"
     : "https://mail.google.com/mail/?view=cm&to=shubhangirupnawar5@gmail.com";
 
-/* Section order: About | Experience | Projects | Skills | Contact */
 const NAV_LINKS = ["About", "Experience", "Projects", "Skills", "Contact"];
 
 const PROJECTS = [
@@ -16,6 +15,8 @@ const PROJECTS = [
     title: "ECCHO Social Follower Tracker",
     tag: ["FastAPI", "React", "Supabase", "Gemini AI"],
     desc: "Automated social media follower tracking platform with AI-powered extraction, brand URL validation, and interactive analytics reporting.",
+    fragmentTitle: "Live Analytics Fragment",
+    fragmentMetric: "14,250 Followers (+12.4%)",
     bullets: [
       "AI-Powered Scraping: Uses Google Gemini AI for high-accuracy numeric follower extraction from dynamic social media pages.",
       "Brand URL Validation: AI verifies whether social URLs belong to the target brand prior to scraping to ensure data accuracy.",
@@ -23,7 +24,6 @@ const PROJECTS = [
     ],
     github: "https://github.com/shubhangirupnawar/eccho-tracker",
     demo: "https://github.com/shubhangirupnawar/eccho-tracker",
-    accent: "#8b5cf6",
   },
   {
     id: 2,
@@ -31,6 +31,8 @@ const PROJECTS = [
     title: "AI-Based Medicine Recommendation",
     tag: ["Python", "Flask", "Machine Learning"],
     desc: "A machine learning system that predicts likely diseases from user-input symptoms and recommends appropriate medicines.",
+    fragmentTitle: "ML Prediction Fragment",
+    fragmentMetric: "Disease Risk: Low • Confidence: 98.4%",
     bullets: [
       "Trained an ML classification model to predict diseases from user-input symptoms.",
       "Deployed through a Flask web application, enabling real-time predictions via a simple web interface.",
@@ -38,7 +40,6 @@ const PROJECTS = [
     ],
     github: "https://github.com/shubhangirupnawar",
     demo: "https://github.com/shubhangirupnawar",
-    accent: "#10b981",
   },
   {
     id: 3,
@@ -46,6 +47,8 @@ const PROJECTS = [
     title: "Ecom Review Miner",
     tag: ["Python", "Selenium", "NLP"],
     desc: "Automated mining and sentiment extraction system designed for e-commerce reviews with structured data pipelines.",
+    fragmentTitle: "Scraper Status Fragment",
+    fragmentMetric: "5,400 Reviews Mined • Sentiment: 91% Positive",
     bullets: [
       "Scrapes dynamic, paginated customer reviews using Python & Selenium.",
       "Performs NLP-based sentiment analysis and key phrase extraction.",
@@ -53,7 +56,6 @@ const PROJECTS = [
     ],
     github: "https://github.com/shubhangirupnawar/bb-fk-scraper",
     demo: "https://github.com/shubhangirupnawar/bb-fk-scraper",
-    accent: "#f59e0b",
   },
 ];
 
@@ -61,7 +63,7 @@ const SKILLS_GROUPS = [
   {
     title: "Languages",
     icon: "💻",
-    items: ["Python"],
+    items: ["Python", "JavaScript (ES6+)", "HTML5 / CSS3", "SQL"],
   },
   {
     title: "Frameworks & Web",
@@ -115,11 +117,14 @@ function useReveal(threshold = 0.1) {
   return [ref, vis];
 }
 
-/* ── Main App ── */
+/* ── Main App Component ── */
 export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("About");
+  const [activeSegment, setActiveSegment] = useState("Overview");
+  const [selectedSlot, setSelectedSlot] = useState("10:00 AM");
+  const [bookingConfirmed, setBookingConfirmed] = useState(false);
   const [resumeOpen, setResumeOpen] = useState(false);
   const [toastMsg, setToastMsg] = useState("");
   const sectionsRef = useRef({});
@@ -139,11 +144,6 @@ export default function App() {
     return () => obs.disconnect();
   }, []);
 
-  useEffect(() => {
-    document.body.style.overflow = resumeOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
-  }, [resumeOpen]);
-
   const scrollTo = section => {
     sectionsRef.current[section]?.scrollIntoView({ behavior: "smooth" });
     setMenuOpen(false);
@@ -160,18 +160,14 @@ export default function App() {
 
   return (
     <div className="app">
-      {/* Bg */}
-      <div className="bg-noise" />
-      <div className="orb orb-1" />
-      <div className="orb orb-2" />
-      <div className="orb orb-3" />
-
-      {/* ── NAV ── */}
+      {/* ── TOP NAV ── */}
       <nav className={`nav${scrolled ? " nav-scrolled" : ""}`}>
         <div className="nav-inner">
-          <div className="nav-logo" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-            <span className="gradient-text">SR</span>
+          <div className="nav-brand" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
+            <div className="nav-brand-logo">SR</div>
+            <span>shubhangi.com</span>
           </div>
+
           <ul className={`nav-links${menuOpen ? " open" : ""}`}>
             {NAV_LINKS.map(l => (
               <li key={l}>
@@ -184,91 +180,196 @@ export default function App() {
               </li>
             ))}
           </ul>
-          <button className={`hamburger${menuOpen ? " open" : ""}`} onClick={() => setMenuOpen(o => !o)}>
-            <span /><span /><span />
-          </button>
+
+          <div className="nav-actions">
+            {/* Signature nav-pill-group */}
+            <div className="nav-pill-group">
+              {["Overview", "Developer"].map(seg => (
+                <button
+                  key={seg}
+                  className={`nav-pill-btn${activeSegment === seg ? " active" : ""}`}
+                  onClick={() => setActiveSegment(seg)}
+                >
+                  {seg}
+                </button>
+              ))}
+            </div>
+
+            <button className="button-primary" onClick={() => scrollTo("Contact")}>
+              Get in Touch
+            </button>
+
+            <button className={`hamburger${menuOpen ? " open" : ""}`} onClick={() => setMenuOpen(o => !o)}>
+              <span /><span /><span />
+            </button>
+          </div>
         </div>
       </nav>
 
-      {/* ── HERO ── */}
-      <section className="hero-section" ref={heroRef}>
+      {/* ── HERO BAND ── */}
+      <section className="hero-band" ref={heroRef}>
         <div className={`hero-inner${heroVis ? " visible" : ""}`}>
-          {/* Left */}
+          {/* Left Column */}
           <div className="hero-left">
-            <div className="hero-badge">
-              <span className="badge-dot" /> Available for Opportunities
+            <div className="badge-pill">
+              <span className="badge-dot" /> Available for 2026 Opportunities
             </div>
-            <h1 className="hero-title">
-              Hi, I'm<br />
-              <span className="gradient-text">Shubhangi Rupnawar</span>
+            <h1 className="hero-display">
+              The better way to schedule & build AI apps.
             </h1>
-            <p className="hero-role">
+            <p className="hero-subhead">
+              Hi, I'm <strong>Shubhangi Rupnawar</strong> —{" "}
               <TypedText words={["Software Developer", "AI & Automation Engineer", "Data Automation Specialist", "Python Developer"]} />
-              {" "}— building tools that automate, analyze, and solve real-world problems.
+              <br />
+              Final-year B.Tech CSE student (<strong>2026 Passout</strong>). Building robust web scraping pipelines, FastAPI backends, and AI integrations.
             </p>
-            {/* CTA buttons — matching reference layout */}
-            <div className="hero-cta">
-              <button className="btn-primary" onClick={() => scrollTo("Contact")}>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .15h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z" /></svg>
-                Get in Touch
+
+            <div className="hero-cta-group">
+              <button className="button-primary" onClick={() => scrollTo("Contact")}>
+                Book a Meeting / Contact
               </button>
-              <button className="btn-ghost" onClick={() => scrollTo("Projects")}>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M2.5 12a9.5 9.5 0 1019 0 9.5 9.5 0 00-19 0z" /><path d="M12 8v4l3 3" /></svg>
+              <button className="button-secondary" onClick={() => scrollTo("Projects")}>
                 View Projects
               </button>
-            </div>
-            <div className="hero-cta-row2">
-              <button className="btn-outline-sm" onClick={() => scrollTo("Experience")}>
-                💼 View Experience
-              </button>
-              <button className="btn-outline-sm" onClick={() => setResumeOpen(true)}>
+              <button className="button-secondary" onClick={() => setResumeOpen(true)}>
                 ⬇ Download CV
               </button>
             </div>
           </div>
 
-          {/* Right — stats grid exactly like reference */}
-          <div className="hero-right">
-            <div className="stats-grid">
-              <div className="stat-card">
-                <div className="stat-number gradient-text">1+</div>
-                <div className="stat-label">Industry Internship</div>
+          {/* Right Column (Hero App Mockup Card - Cal.com Product UI Fragment) */}
+          <div className="hero-app-mockup-card">
+            <div className="mockup-header">
+              <div className="mockup-user">
+                <div className="avatar-circle">SR</div>
+                <div className="mockup-user-info">
+                  <h4>Shubhangi Rupnawar</h4>
+                  <p>Software Developer & AI Engineer (2026 Passout)</p>
+                </div>
               </div>
-              <div className="stat-card">
-                <div className="stat-number gradient-text">3+</div>
-                <div className="stat-label">Featured Projects</div>
+              <span className="badge-pill" style={{ margin: 0 }}>15 min</span>
+            </div>
+
+            <div className="mockup-body">
+              <div className="mockup-section-title">Select Available Time Slot</div>
+              <div className="slots-grid">
+                {["10:00 AM", "02:30 PM", "04:00 PM"].map(slot => (
+                  <button
+                    key={slot}
+                    className={`slot-btn${selectedSlot === slot ? " selected" : ""}`}
+                    onClick={() => { setSelectedSlot(slot); setBookingConfirmed(false); }}
+                  >
+                    {slot}
+                  </button>
+                ))}
               </div>
-              <div className="stat-card">
-                <div className="stat-number gradient-text">10+</div>
-                <div className="stat-label">Technologies Used</div>
-              </div>
-              <div className="stat-card">
-                <div className="stat-number gradient-text">2+</div>
-                <div className="stat-label">AI Integrations</div>
+
+              <div className="booking-confirm-box">
+                <div className="confirm-text">
+                  {bookingConfirmed ? "✅ Slot Reserved!" : `Confirm slot for ${selectedSlot}`}
+                </div>
+                <button
+                  className="button-primary confirm-btn"
+                  onClick={() => {
+                    setBookingConfirmed(true);
+                    setToastMsg(`Meeting slot reserved for ${selectedSlot}!`);
+                    setTimeout(() => setToastMsg(""), 2500);
+                  }}
+                >
+                  {bookingConfirmed ? "Confirmed" : "Confirm"}
+                </button>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── ABOUT ── */}
+      {/* ── METRIC BAND ── */}
+      <div className="metric-band">
+        <div className="metric-grid">
+          <div className="metric-card">
+            <div className="metric-value">1+</div>
+            <div className="metric-label">Industry Internship</div>
+          </div>
+          <div className="metric-card">
+            <div className="metric-value">3+</div>
+            <div className="metric-label">Featured Projects</div>
+          </div>
+          <div className="metric-card">
+            <div className="metric-value">10+</div>
+            <div className="metric-label">Tech Stack Tools</div>
+          </div>
+          <div className="metric-card">
+            <div className="metric-value">2026</div>
+            <div className="metric-label">Passout Batch</div>
+          </div>
+        </div>
+      </div>
+
+      {/* ── ABOUT SECTION ── */}
       <AboutSection sectionsRef={sectionsRef} />
 
-      {/* ── EXPERIENCE (Moved to top right after About!) ── */}
+      {/* ── WORK EXPERIENCE (FEATURED DARK CARD) ── */}
       <ExperienceSection sectionsRef={sectionsRef} />
 
-      {/* ── PROJECTS ── */}
+      {/* ── PROJECTS SECTION ── */}
       <ProjectsSection sectionsRef={sectionsRef} />
 
-      {/* ── SKILLS ── */}
+      {/* ── SKILLS SECTION ── */}
       <SkillsSection sectionsRef={sectionsRef} />
 
-      {/* ── CONTACT ── */}
+      {/* ── CONTACT SECTION ── */}
       <ContactSection sectionsRef={sectionsRef} getMailHref={getMailHref} copyEmail={copyEmail} setResumeOpen={setResumeOpen} />
 
-      {/* ── FOOTER ── */}
+      {/* ── PRE-FOOTER CTA BAND ── */}
+      <div className="cta-band-light">
+        <h2>Smarter, simpler AI & data automation.</h2>
+        <p>Looking to build high-accuracy scraping pipelines, REST APIs, or AI applications? Let me help you ship.</p>
+        <button className="button-primary" onClick={() => scrollTo("Contact")}>
+          Get in Touch
+        </button>
+      </div>
+
+      {/* ── DARK NAVY FOOTER ── */}
       <footer className="footer">
-        <span>© 2025 Shubhangi Rupnawar &nbsp;·&nbsp; SOFTWARE DEVELOPER | AI & AUTOMATION</span>
+        <div className="footer-inner">
+          <div className="footer-brand">
+            <h3>shubhangi.com</h3>
+            <p>Software Developer specializing in AI & Automation. Final-year B.Tech CSE student (2026 Passout).</p>
+          </div>
+
+          <div className="footer-col">
+            <h4>Navigation</h4>
+            <ul>
+              {NAV_LINKS.map(l => (
+                <li key={l}><button onClick={() => scrollTo(l)}>{l}</button></li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="footer-col">
+            <h4>Projects</h4>
+            <ul>
+              <li><a href="https://github.com/shubhangirupnawar/eccho-tracker" target="_blank" rel="noreferrer">ECCHO Tracker</a></li>
+              <li><a href="https://github.com/shubhangirupnawar" target="_blank" rel="noreferrer">AI Medicine Rec</a></li>
+              <li><a href="https://github.com/shubhangirupnawar/bb-fk-scraper" target="_blank" rel="noreferrer">Ecom Review Miner</a></li>
+            </ul>
+          </div>
+
+          <div className="footer-col">
+            <h4>Connect</h4>
+            <ul>
+              <li><a href={getMailHref()} target="_blank" rel="noreferrer">Email</a></li>
+              <li><a href="https://github.com/shubhangirupnawar" target="_blank" rel="noreferrer">GitHub</a></li>
+              <li><a href="https://www.linkedin.com/in/shubhangi-rupnawar-17a5443a3" target="_blank" rel="noreferrer">LinkedIn</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="footer-bottom">
+          <span>© 2026 Shubhangi Rupnawar &nbsp;·&nbsp; SOFTWARE DEVELOPER | AI & AUTOMATION &nbsp;·&nbsp; 2026 PASSOUT</span>
+          <span>Designed with Cal.com System Principles</span>
+        </div>
       </footer>
 
       {/* ── RESUME MODAL ── */}
@@ -276,9 +377,9 @@ export default function App() {
         <div className="modal-overlay" onClick={() => setResumeOpen(false)}>
           <div className="modal-box" onClick={e => e.stopPropagation()}>
             <div className="modal-head">
-              <h3>Resume — Shubhangi Rupnawar</h3>
-              <div className="modal-head-actions">
-                <a href={`${import.meta.env.BASE_URL}resume.pdf`} download className="btn-primary">⬇ Download</a>
+              <h3>Resume — Shubhangi Rupnawar (2026 Passout)</h3>
+              <div style={{ display: "flex", gap: "10px" }}>
+                <a href={`${import.meta.env.BASE_URL}resume.pdf`} download className="button-primary" style={{ height: "32px", fontSize: "13px" }}>⬇ Download</a>
                 <button className="modal-close" onClick={() => setResumeOpen(false)}>✕</button>
               </div>
             </div>
@@ -297,7 +398,7 @@ export default function App() {
   );
 }
 
-/* ── Section Header (matches reference style) ── */
+/* ── Section Header Component ── */
 function SectionHeader({ label, title, desc }) {
   const [ref, vis] = useReveal();
   return (
@@ -309,21 +410,39 @@ function SectionHeader({ label, title, desc }) {
   );
 }
 
-/* ── About ── */
+/* ── About Section Component ── */
 function AboutSection({ sectionsRef }) {
   const [ref, vis] = useReveal();
   return (
     <section className="section" data-section="About" ref={el => { sectionsRef.current["About"] = el; }}>
       <div className="section-inner">
-        <SectionHeader label="WHO I AM" title="About Me" />
-        <div ref={ref} className={`about-content${vis ? " visible" : ""}`}>
-          <p>I'm a <strong>Software Developer specializing in AI & Automation</strong> based in Maharashtra, India. Final-year B.Tech CSE student with hands-on internship experience in automated data extraction, web scraping, and AI-integrated applications.</p>
-          <p>I build robust applications that automate data extraction pipelines, design FastAPI/Flask backends, and integrate generative AI APIs like <strong>Google Gemini AI</strong> to solve real business needs.</p>
-          <p>My expertise spans React.js for modern web interfaces, Python for backend development and automation, database integration with Supabase and MongoDB, and custom web scraping pipelines.</p>
-          <div className="about-tags">
-            {["AI & Automation", "Python Development", "Web Scraping", "Data Pipelines", "REST APIs", "Machine Learning"].map(t => (
-              <span key={t} className="about-tag">{t}</span>
-            ))}
+        <SectionHeader label="WHO I AM" title="Engineered with precision, built for scale." />
+        <div ref={ref} className="about-card-grid">
+          <div className="feature-card">
+            <h3 className="feature-title">Background & Education</h3>
+            <p className="feature-body">
+              I'm a <strong>Software Developer specializing in AI & Automation</strong> based in Maharashtra, India.
+              Final-year B.Tech CSE student (<strong>2026 Passout</strong>) with hands-on internship experience in automated data extraction, web scraping, and AI-integrated applications.
+            </p>
+            <div className="tags-row">
+              <span className="tag-pill">2026 Passout</span>
+              <span className="tag-pill">B.Tech CSE</span>
+              <span className="tag-pill">Maharashtra, India</span>
+            </div>
+          </div>
+
+          <div className="feature-card">
+            <h3 className="feature-title">Technical Expertise</h3>
+            <p className="feature-body">
+              I build robust applications that automate data extraction pipelines, design FastAPI/Flask backends, and integrate generative AI APIs like <strong>Google Gemini AI</strong> to solve real business needs.
+            </p>
+            <div className="tags-row">
+              <span className="tag-pill">Python</span>
+              <span className="tag-pill">React.js</span>
+              <span className="tag-pill">FastAPI</span>
+              <span className="tag-pill">Google Gemini AI</span>
+              <span className="tag-pill">Supabase</span>
+            </div>
           </div>
         </div>
       </div>
@@ -331,113 +450,107 @@ function AboutSection({ sectionsRef }) {
   );
 }
 
-/* ── Experience ── */
+/* ── Experience Section (Featured Dark Card) ── */
 function ExperienceSection({ sectionsRef }) {
   const [ref, vis] = useReveal();
   return (
     <section className="section section-alt" data-section="Experience" ref={el => { sectionsRef.current["Experience"] = el; }}>
       <div className="section-inner">
         <SectionHeader label="WHERE I'VE WORKED" title="Work Experience" />
-        <div ref={ref} className={`exp-wrap${vis ? " visible" : ""}`}>
-          <div className="card exp-card">
-            <div className="exp-head">
-              <div>
-                <h3 className="exp-role">Data Automation & Software Development Intern</h3>
-                <div className="exp-company">3C Customerization Technologies Pvt. Ltd.</div>
-              </div>
-              <span className="exp-badge">Apr 2026 – Jul 2026</span>
+        <div ref={ref} className={`featured-dark-card${vis ? " visible" : ""}`}>
+          <div className="dark-card-head">
+            <div>
+              <h3 className="dark-role">Data Automation & Software Development Intern</h3>
+              <div className="dark-company">3C Customerization Technologies Pvt. Ltd.</div>
             </div>
-            <ul className="exp-bullets">
-              <li>Developed automated data extraction (web scraping) solutions to collect structured data from multiple websites, designing reusable scripts to handle varying site structures.</li>
-              <li>Contributed to building a centralized data platform for storing, retrieving, and visualizing extracted data efficiently, supporting reliable downstream analysis and reporting.</li>
-              <li>Collaborated remotely with the mentor and team through regular progress catch-ups, following professional software delivery practices, version control workflows, and strict data-security guidelines.</li>
-              <li>Worked independently on end-to-end pipelines — from writing extraction logic to validating and structuring data — while managing timelines under real production constraints.</li>
-            </ul>
+            <span className="dark-badge">Apr 2026 – Jul 2026</span>
           </div>
+          <ul className="dark-bullets">
+            <li>Developed automated data extraction (web scraping) solutions to collect structured data from multiple websites, designing reusable scripts to handle varying site structures.</li>
+            <li>Contributed to building a centralized data platform for storing, retrieving, and visualizing extracted data efficiently, supporting reliable downstream analysis and reporting.</li>
+            <li>Collaborated remotely with the mentor and team through regular progress catch-ups, following professional software delivery practices, version control workflows, and strict data-security guidelines.</li>
+            <li>Worked independently on end-to-end pipelines — from writing extraction logic to validating and structuring data — while managing timelines under real production constraints.</li>
+          </ul>
         </div>
       </div>
     </section>
   );
 }
 
-/* ── Projects ── */
+/* ── Projects Section ── */
 function ProjectsSection({ sectionsRef }) {
   return (
     <section className="section" data-section="Projects" ref={el => { sectionsRef.current["Projects"] = el; }}>
       <div className="section-inner">
-        <SectionHeader label="WHAT I'VE BUILT" title="Projects" desc="Real-world applications built with modern technologies and AI integrations." />
+        <SectionHeader label="WHAT I'VE BUILT" title="Featured Projects" desc="Real-world applications built with modern technologies and AI integrations." />
         <div className="projects-grid">
-          {PROJECTS.map(p => <ProjectCard key={p.id} p={p} />)}
+          {PROJECTS.map(p => <ProductMockupCard key={p.id} p={p} />)}
         </div>
       </div>
     </section>
   );
 }
 
-function ProjectCard({ p }) {
+function ProductMockupCard({ p }) {
   const [ref, vis] = useReveal();
   return (
-    <div ref={ref} className={`card project-card${vis ? " visible" : ""}`} style={{ "--ca": p.accent }}>
-      <div className="project-top">
-        <span className="project-icon">{p.icon}</span>
-        <div className="project-tags">
-          {p.tag.map((t, i) => <span key={i} className="tag">{t}</span>)}
+    <div ref={ref} className={`product-mockup-card${vis ? " visible" : ""}`}>
+      {/* Product UI Fragment embedded directly inside card */}
+      <div className="card-product-fragment">
+        <div className="fragment-header">
+          <span className="fragment-title">{p.fragmentTitle}</span>
+          <span className="fragment-badge">LIVE</span>
         </div>
+        <div style={{ fontSize: "13px", fontWeight: 600, color: "var(--ink)" }}>{p.fragmentMetric}</div>
       </div>
-      <h3 className="project-title">{p.title}</h3>
-      <p className="project-desc">{p.desc}</p>
-      <ul className="project-bullets">
-        {p.bullets.map((b, i) => <li key={i}>{b}</li>)}
-      </ul>
+
+      <div>
+        <div className="tags-row" style={{ marginTop: 0, marginBottom: "12px" }}>
+          {p.tag.map((t, i) => <span key={i} className="tag-pill">{t}</span>)}
+        </div>
+        <h3 className="project-title-text">{p.title}</h3>
+        <p className="project-desc-text">{p.desc}</p>
+      </div>
+
       <div className="project-links">
-        <a href={p.github} target="_blank" rel="noreferrer" className="plink">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z" /></svg>
-          Code
+        <a href={p.github} target="_blank" rel="noreferrer" className="project-link-btn">
+          View Code →
         </a>
-        <a href={p.demo} target="_blank" rel="noreferrer" className="plink">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" /><polyline points="15 3 21 3 21 9" /><line x1="10" y1="14" x2="21" y2="3" /></svg>
-          Live Demo
+        <a href={p.demo} target="_blank" rel="noreferrer" className="project-link-btn">
+          Live Demo ↗
         </a>
       </div>
     </div>
   );
 }
 
-/* ── Skills ── */
+/* ── Skills Section ── */
 function SkillsSection({ sectionsRef }) {
   return (
     <section className="section section-alt" data-section="Skills" ref={el => { sectionsRef.current["Skills"] = el; }}>
       <div className="section-inner">
         <SectionHeader label="TECH STACK" title="Skills & Technologies" desc="Technologies and tools I use to build and ship products." />
         <div className="skills-grid">
-          {SKILLS_GROUPS.map((g, i) => <SkillGroup key={i} group={g} idx={i} />)}
+          {SKILLS_GROUPS.map((g, i) => (
+            <div key={i} className="skill-card">
+              <div className="skill-card-head">
+                <span>{g.icon}</span>
+                <span>{g.title}</span>
+              </div>
+              <div className="skill-card-list">
+                {g.items.map((item, idx) => (
+                  <div key={idx} className="skill-card-item">{item}</div>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
   );
 }
 
-function SkillGroup({ group, idx }) {
-  const [ref, vis] = useReveal();
-  return (
-    <div ref={ref} className={`card skill-group${vis ? " visible" : ""}`} style={{ transitionDelay: `${idx * 80}ms` }}>
-      <div className="sg-head">
-        <span className="sg-icon">{group.icon}</span>
-        <h3 className="sg-title">{group.title}</h3>
-      </div>
-      <ul className="skill-list">
-        {group.items.map((s, i) => (
-          <li key={i} className="skill-item">
-            <span className="sdot" />
-            {s}
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-
-/* ── Contact ── */
+/* ── Contact Section ── */
 function ContactSection({ sectionsRef, getMailHref, copyEmail, setResumeOpen }) {
   const [ref, vis] = useReveal();
   return (
@@ -448,48 +561,36 @@ function ContactSection({ sectionsRef, getMailHref, copyEmail, setResumeOpen }) 
           title="Let's Connect"
           desc="Looking to build AI-powered tools or automate your data workflows? Let's discuss how I can help."
         />
-        <div ref={ref} className={`contact-cards${vis ? " visible" : ""}`}>
-          {/* Email */}
-          <a href={getMailHref()} target="_blank" rel="noreferrer" className="card ccard">
-            <div className="ccard-icon ccard-green">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /><polyline points="22,6 12,13 2,6" /></svg>
-            </div>
-            <div className="ccard-body">
-              <span className="ccard-label">EMAIL</span>
-              <span className="ccard-value accent">shubhangirupnawar5@gmail.com</span>
+        <div ref={ref} className={`contact-grid${vis ? " visible" : ""}`}>
+          <a href={getMailHref()} target="_blank" rel="noreferrer" className="contact-card">
+            <div className="contact-icon-box">✉️</div>
+            <div>
+              <div className="contact-info-label">EMAIL</div>
+              <div className="contact-info-val">shubhangirupnawar5@gmail.com</div>
             </div>
           </a>
 
-          {/* GitHub */}
-          <a href="https://github.com/shubhangirupnawar" target="_blank" rel="noreferrer" className="card ccard">
-            <div className="ccard-icon ccard-cyan">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z" /></svg>
-            </div>
-            <div className="ccard-body">
-              <span className="ccard-label">GITHUB</span>
-              <span className="ccard-value accent">github.com/shubhangirupnawar</span>
+          <a href="https://github.com/shubhangirupnawar" target="_blank" rel="noreferrer" className="contact-card">
+            <div className="contact-icon-box">💻</div>
+            <div>
+              <div className="contact-info-label">GITHUB</div>
+              <div className="contact-info-val">github.com/shubhangirupnawar</div>
             </div>
           </a>
 
-          {/* LinkedIn */}
-          <a href="https://www.linkedin.com/in/shubhangi-rupnawar-17a5443a3" target="_blank" rel="noreferrer" className="card ccard">
-            <div className="ccard-icon ccard-blue">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" /></svg>
-            </div>
-            <div className="ccard-body">
-              <span className="ccard-label">LINKEDIN</span>
-              <span className="ccard-value accent">linkedin.com/in/shubhangi-rupnawar</span>
+          <a href="https://www.linkedin.com/in/shubhangi-rupnawar-17a5443a3" target="_blank" rel="noreferrer" className="contact-card">
+            <div className="contact-icon-box">🔗</div>
+            <div>
+              <div className="contact-info-label">LINKEDIN</div>
+              <div className="contact-info-val">linkedin.com/in/shubhangi-rupnawar</div>
             </div>
           </a>
 
-          {/* Location */}
-          <div className="card ccard">
-            <div className="ccard-icon ccard-orange">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" /><circle cx="12" cy="10" r="3" /></svg>
-            </div>
-            <div className="ccard-body">
-              <span className="ccard-label">LOCATION</span>
-              <span className="ccard-value">Maharashtra, India</span>
+          <div className="contact-card">
+            <div className="contact-icon-box">📍</div>
+            <div>
+              <div className="contact-info-label">LOCATION</div>
+              <div className="contact-info-val">Maharashtra, India (2026 Passout)</div>
             </div>
           </div>
         </div>
