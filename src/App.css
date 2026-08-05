@@ -353,7 +353,7 @@ a { color: inherit; text-decoration: none; }
 .plink:hover { color: var(--accent); border-color: rgba(6,182,212,0.28); background: rgba(6,182,212,0.05); }
 
 /* ─── Skills ─────────────────────────────────────────────── */
-.skills-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.skills-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
 .skill-group {
   opacity: 0; transform: translateY(22px);
   transition: opacity 0.55s, transform 0.55s;

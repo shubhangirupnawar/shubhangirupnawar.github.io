@@ -13,25 +13,10 @@ const NAV_LINKS = ["About", "Projects", "Skills", "Experience", "Contact"];
 const PROJECTS = [
   {
     id: 1,
-    icon: "👁️",
-    title: "Vision AI Analyzer",
-    tag: ["React", "FastAPI", "Google Gemini AI"],
-    desc: "A full-stack web app powered by Google Gemini AI that analyzes uploaded images and generates human-readable AI summaries.",
-    bullets: [
-      "Designed a FastAPI backend to integrate with Gemini AI API for real-time image inference.",
-      "Built a clean, responsive React interface for image upload, live analysis feedback, and summary display.",
-      "Implemented error handling and response formatting across varied image types.",
-    ],
-    github: "https://github.com/shubhangirupnawar/vision-ai-analyzer",
-    demo: "https://github.com/shubhangirupnawar/vision-ai-analyzer",
-    accent: "#06b6d4",
-  },
-  {
-    id: 2,
     icon: "📡",
     title: "Eccho-Tracker",
     tag: ["FastAPI", "React", "Supabase"],
-    desc: "A full-stack mention-tracking platform with a FastAPI backend, REST APIs, Supabase database, and a responsive React UI for real-time tracking.",
+    desc: "A full-stack mention-tracking platform with a FastAPI backend, REST APIs, a Supabase database, and a responsive React UI for real-time tracking.",
     bullets: [
       "Implemented database schemas and API endpoints in Supabase to store and query tracked mentions.",
       "Built dashboard views to visualize tracked data trends for end users in real time.",
@@ -42,7 +27,7 @@ const PROJECTS = [
     accent: "#8b5cf6",
   },
   {
-    id: 3,
+    id: 2,
     icon: "💊",
     title: "AI-Based Medicine Recommendation",
     tag: ["Python", "Flask", "Machine Learning"],
@@ -57,7 +42,7 @@ const PROJECTS = [
     accent: "#10b981",
   },
   {
-    id: 4,
+    id: 3,
     icon: "⛏️",
     title: "Ecom Review Miner",
     tag: ["Python", "Selenium", "NLP"],
@@ -77,22 +62,27 @@ const SKILLS_GROUPS = [
   {
     title: "Languages",
     icon: "💻",
-    items: ["Python", "Java", "C (Basic)", "HTML", "JavaScript"],
+    items: ["Python"],
   },
   {
-    title: "Frameworks & Tools",
+    title: "Web & Frameworks",
     icon: "⚙️",
-    items: ["React.js", "FastAPI", "Flask", "Selenium", "Supabase"],
+    items: ["HTML", "React", "Flask", "FastAPI"],
   },
   {
-    title: "AI & Data",
+    title: "Automation & Data",
+    icon: "🔄",
+    items: ["Web Scraping", "Data Pipelines", "Data Visualization", "Google Sheets API"],
+  },
+  {
+    title: "AI / ML",
     icon: "🤖",
-    items: ["Google Gemini AI", "Machine Learning", "NLP", "Data Pipelines", "Pandas / NumPy"],
+    items: ["Machine Learning Basics", "Google Gemini AI", "REST APIs", "OOP", "Data Structures"],
   },
   {
-    title: "Developer Tools",
+    title: "Tools",
     icon: "🛠️",
-    items: ["Git / GitHub", "VS Code", "PyCharm", "Google Sheets API", "REST APIs"],
+    items: ["VS Code", "PyCharm", "JDK", "Git / GitHub", "Supabase"],
   },
 ];
 
