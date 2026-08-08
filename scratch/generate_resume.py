@@ -89,6 +89,7 @@ story.append(Paragraph(
 story.append(Spacer(1, 4))
 
 # ── KEY HIGHLIGHTS ───────────────────────────────────────────
+story += sec("KEY HIGHLIGHTS")
 highlights = [[
     Paragraph("<font size=11 color='#0284c7'><b>3+</b></font><br/><font size=7.2 color='#475569'>Full-Stack Projects Shipped</font>",
               ps("h1", alignment=TA_CENTER, leading=9.5)),
