@@ -77,7 +77,7 @@ const SKILLS_GROUPS = [
   {
     title: "AI / ML",
     icon: "🤖",
-    items: ["Machine Learning Basics", "Google Gemini AI", "REST APIs", "OOP", "Data Structures"],
+    items: ["Machine Learning Basics", "Google Gemini AI", "REST APIs", "OOP"],
   },
   {
     title: "Tools",

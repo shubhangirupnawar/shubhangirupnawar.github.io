@@ -162,7 +162,7 @@ skills = [
     ("Languages",        "Python"),
     ("Web & Frameworks", "HTML, React, Flask, FastAPI"),
     ("Automation & Data","Web Scraping, Data Pipelines, Data Visualization, Google Sheets API"),
-    ("AI / ML",          "Machine Learning Basics, Google Gemini AI, REST APIs, OOP, Data Structures"),
+    ("AI / ML",          "Machine Learning Basics, Google Gemini AI, REST APIs, OOP"),
     ("Tools",            "VS Code, PyCharm, JDK, Git/GitHub, Supabase"),
 ]
 sk_rows = [[Paragraph(f"<b>{k}</b>", SKILL_K), Paragraph(v, SKILL_V)] for k, v in skills]
