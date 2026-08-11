@@ -8,7 +8,7 @@ const getMailHref = () =>
 
 /* Reference site nav: About | Skills | Certifications | Experience | Contact
    Shubhangi nav:      About | Projects | Skills | Experience | Contact        */
-const NAV_LINKS = ["About", "Projects", "Skills", "Experience", "Contact"];
+const NAV_LINKS = ["About", "Experience", "Projects", "Skills", "Contact"];
 
 const PROJECTS = [
   {
@@ -260,14 +260,14 @@ export default function App() {
       {/* ── ABOUT ── */}
       <AboutSection sectionsRef={sectionsRef} />
 
+      {/* ── EXPERIENCE ── */}
+      <ExperienceSection sectionsRef={sectionsRef} />
+
       {/* ── PROJECTS ── */}
       <ProjectsSection sectionsRef={sectionsRef} />
 
       {/* ── SKILLS ── */}
       <SkillsSection sectionsRef={sectionsRef} />
-
-      {/* ── EXPERIENCE ── */}
-      <ExperienceSection sectionsRef={sectionsRef} />
 
       {/* ── CONTACT ── */}
       <ContactSection sectionsRef={sectionsRef} getMailHref={getMailHref} copyEmail={copyEmail} setResumeOpen={setResumeOpen} />

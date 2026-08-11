@@ -183,7 +183,7 @@ story.append(Spacer(1, 4))
 # ── EDUCATION ────────────────────────────────────────────────
 story += sec("EDUCATION")
 story.append(Paragraph(
-    "<b>B.Tech, Computer Science Engineering</b> &nbsp;—&nbsp; First Class &nbsp;<i>(2023 – 2026)</i><br/>"
+    "<b>B.Tech, Computer Science Engineering</b> &nbsp;—&nbsp; First Class &nbsp;<i>(2022 – 2026)</i><br/>"
     "12th Standard: 60% &nbsp;|&nbsp; 10th Standard: 80%", BODY
 ))
 story.append(Spacer(1, 4))
