@@ -284,12 +284,12 @@ export default function App() {
             <div className="modal-head">
               <h3>Resume — Shubhangi Rupnawar</h3>
               <div className="modal-head-actions">
-                <a href={`${import.meta.env.BASE_URL}resume.pdf`} download className="btn-primary">⬇ Download</a>
+                <a href={`${import.meta.env.BASE_URL}resume.pdf?v=2`} download="Shubhangi_Rupnawar_Resume.pdf" className="btn-primary">⬇ Download</a>
                 <button className="modal-close" onClick={() => setResumeOpen(false)}>✕</button>
               </div>
             </div>
             <iframe
-              src={`${import.meta.env.BASE_URL}resume.pdf#toolbar=0&navpanes=0`}
+              src={`${import.meta.env.BASE_URL}resume.pdf?v=2#toolbar=0&navpanes=0`}
               title="Resume"
               className="resume-frame"
             />
